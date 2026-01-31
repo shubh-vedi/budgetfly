@@ -111,11 +111,14 @@ backend:
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: true
         agent: "main"
         comment: "Implemented POST /api/items, GET /api/items, DELETE /api/items/{id}, PUT /api/items/{id}"
+      - working: true
+        agent: "testing"
+        comment: "✅ All CRUD operations working correctly. Tested: create items with cash/online payment types, get all items, get single item, update item, delete item. Validation working for invalid payment types. Error handling correct for non-existent items (404). 8/8 tests passed."
 
   - task: "Create budget summary API"
     implemented: true
@@ -123,11 +126,14 @@ backend:
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: true
         agent: "main"
         comment: "Implemented GET /api/summary - returns total_amount, total_items, cash_total, online_total"
+      - working: true
+        agent: "testing"
+        comment: "✅ Summary endpoint working correctly. Returns all required fields (total_amount, total_items, cash_total, online_total) with correct calculations. Verified cash_total + online_total = total_amount. 1/1 tests passed."
 
   - task: "Create family members API - CRUD operations"
     implemented: true
@@ -135,11 +141,14 @@ backend:
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "medium"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: true
         agent: "main"
         comment: "Implemented POST /api/family-members, GET /api/family-members, DELETE /api/family-members/{id}"
+      - working: true
+        agent: "testing"
+        comment: "Minor: Family members CRUD working correctly. Tested: create members, get all members, delete members. Error handling correct for non-existent members (404). Minor issue: no validation for empty names (accepts empty strings). 5/6 tests passed - core functionality working."
 
 frontend:
   - task: "Home screen with expense list and summary"
